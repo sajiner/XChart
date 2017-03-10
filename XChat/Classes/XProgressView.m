@@ -41,7 +41,13 @@
 
 - (void)setProgress:(CGFloat)progress {
     _progress = progress;
-    UIBezierPath *path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width * _progress, self.frame.size.height) byRoundingCorners:UIRectCornerTopLeft cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+    
+    UIBezierPath *path1 = nil;
+    if (_progress >= 1.0) {
+        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width * _progress, self.frame.size.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+    } else {
+        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width * _progress, self.frame.size.height) byRoundingCorners:UIRectCornerTopLeft cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+    }
     _progressLayer.path = path1.CGPath;
 }
 

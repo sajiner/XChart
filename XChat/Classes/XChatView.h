@@ -20,8 +20,10 @@
  @param frame frame
  @param columns 有多少列
  @param rows 有多少行
+ @param maxRate 最大利率
+ @param holdDay 持有天数
  @return XChatView 的对象
  */
-- (instancetype)initWithFrame:(CGRect)frame columns: (int)columns rows: (int)rows;
+- (instancetype)initWithFrame:(CGRect)frame columns: (int)columns rows: (int)rows maxRate: (CGFloat)maxRate holdDay: (int)holdDay rateArr: (NSArray *)rateArr;
 
 @end
