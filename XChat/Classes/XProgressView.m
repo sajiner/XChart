@@ -42,11 +42,21 @@
 - (void)setProgress:(CGFloat)progress {
     _progress = progress;
     
-    UIBezierPath *path1 = nil;
-    if (_progress >= 1.0) {
-        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width * _progress, self.frame.size.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+    CGFloat w = self.bounds.size.width;
+    CGFloat h = self.bounds.size.height;
+    
+    CGSize size;
+    if (w * _progress > h) {
+        size = CGSizeMake(h * 0.5, h * 0.5);
     } else {
-        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.frame.size.width * _progress, self.frame.size.height) byRoundingCorners:UIRectCornerTopLeft cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+        size = CGSizeMake(w * _progress * 0.5, w * _progress * 0.5);
+    }
+    
+    UIBezierPath *path1 = nil;
+    if (_progress > 0.5) {
+        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, w * _progress, h) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:size];
+    } else {
+        path1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, w * _progress, h) byRoundingCorners:UIRectCornerTopLeft cornerRadii:size];
     }
     _progressLayer.path = path1.CGPath;
 }

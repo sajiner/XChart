@@ -27,7 +27,7 @@
 
 @implementation XChatView
 
-- (instancetype)initWithFrame:(CGRect)frame columns:(int)columns rows:(int)rows maxRate:(CGFloat)maxRate holdDay:(int)holdDay rateArr:(NSArray *)rateArr{
+- (instancetype)initWithFrame:(CGRect)frame columns:(int)columns rows:(int)rows maxRate:(CGFloat)maxRate holdDay:(int)holdDay rateArr:(NSArray *)rateArr {
     self = [super initWithFrame:frame];
     if (self) {
         _columns = columns;
