@@ -62,6 +62,9 @@
     for (int i = 0; i < _rows; i++) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kMargin, CGRectGetMaxY(titleLabel.frame) + kMargin * 2 + kLabelHeight * i, kWidthY, kLabelHeight)];
         label.text = [NSString stringWithFormat:@"%.2f%%", _maxRate - (int)(_maxRate / _rows) * i];
+        if (_maxRate < _rows) {
+            label.text = [NSString stringWithFormat:@"%.2f%%", _maxRate - (CGFloat)(_maxRate / (_rows - 1)) * i];
+        }
         if (i == _rows - 1) {
             label.text = @"月份";
         }
@@ -87,10 +90,15 @@
         CGFloat progressH = 0;
         double rate = [_rateArr[i - 1] doubleValue];
         double minRate = _maxRate - (int)(_maxRate / _rows) * (_rows - 2);
-        if ( rate <= minRate) {
-            progressH = (rate / minRate * kLabelHeight);
+        if (_maxRate < _rows) {
+            double marginRate = (CGFloat)_maxRate / (_rows - 1);
+            progressH = (rate / marginRate * kLabelHeight);
         } else {
-            progressH = kLabelHeight + (CGFloat)((rate - minRate) / (_maxRate / _rows)) * kLabelHeight;
+            if ( rate <= minRate) {
+                progressH = (rate / minRate * kLabelHeight);
+            } else {
+                progressH = kLabelHeight + (CGFloat)((rate - minRate) / (_maxRate / _rows)) * kLabelHeight;
+            }
         }
         
         XProgressView *proView = [[XProgressView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(viewY.frame) + margin * i + 15 * (i - 1), _rows * kLabelHeight + 3 * kMargin - progressH, 15, progressH)];
