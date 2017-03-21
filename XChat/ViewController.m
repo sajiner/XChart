@@ -32,7 +32,7 @@
 
 - (XChatView *)chatView {
     if (!_chatView) {
-        NSArray *arr = @[@(6.5), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5), @(7), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5)];
+        NSArray *arr = @[@(6.5), @(1), @(2.8), @(14.5), @(2.3), @(16.5), @(7), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5)];
         _chatView = [[XChatView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 300) columns:12 rows:7 maxRate:13.4 holdDay:200 rateArr:arr];
         _chatView.backgroundColor = [UIColor orangeColor];
     }

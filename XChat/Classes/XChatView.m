@@ -103,6 +103,9 @@
         
         XProgressView *proView = [[XProgressView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(viewY.frame) + margin * i + 15 * (i - 1), _rows * kLabelHeight + 3 * kMargin - progressH, 15, progressH)];
         [self addSubview:proView];
+        if (proView.frame.size.height < proView.frame.size.width * 0.5) {
+            proView.layer.masksToBounds = YES;
+        }
         if (i <= (int)(_holdDay / 30)) {
             proView.progress = 1;
             continue;

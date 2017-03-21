@@ -32,10 +32,17 @@
 - (void)initElement {
     /// 灰色背景
     CAShapeLayer *bgLayer = [CAShapeLayer layer];
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(w * 0.5, w * 0.5)];
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(w * 0.5, w * 0.5)];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, w * 0.5, w, h - w * 0.5)];
     bgLayer.path = path.CGPath;
     bgLayer.fillColor = [UIColor lightGrayColor].CGColor;
     [self.layer addSublayer:bgLayer];
+    // 顶部圆环
+    CAShapeLayer *bLayer = [CAShapeLayer layer];
+    UIBezierPath *path1 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(w * 0.5, w * 0.5) radius:w * 0.5 startAngle:-M_PI endAngle: 0 clockwise:YES];
+    bLayer.path = path1.CGPath;
+    bLayer.fillColor = [UIColor lightGrayColor].CGColor;
+    [self.layer addSublayer:bLayer];
     
     /// 显示进度的layer
     _progressLayer = [CAShapeLayer layer];
