@@ -21,17 +21,19 @@
     [super viewDidLoad];
      [self.view addSubview:self.chatView];
     
-//    CAShapeLayer *bgLayer = [CAShapeLayer layer];
-//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(100, 100, 50, 40) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(25, 25)];
-//    bgLayer.path = path.CGPath;
-//    bgLayer.fillColor = [UIColor lightGrayColor].CGColor;    [self.view.layer addSublayer:bgLayer];
+//    CAShapeLayer *layer = [CAShapeLayer layer];
+//    layer.fillColor = [UIColor redColor].CGColor;
+//    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(100, 100) radius:50 startAngle:-M_PI endAngle:-M_PI_2 clockwise:YES];
+//    [path addLineToPoint:CGPointMake(80, 100)];
+//    layer.path = path.CGPath;
+//    [self.view.layer addSublayer:layer];
 }
 
 
 - (XChatView *)chatView {
     if (!_chatView) {
-        NSArray *arr = @[@(6.5), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5), @(6.5), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5)];
-        _chatView = [[XChatView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 300) columns:12 rows:7 maxRate:6 holdDay:190 rateArr:arr];
+        NSArray *arr = @[@(6.5), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5), @(7), @(7.3), @(2.8), @(14.5), @(12.3), @(16.5)];
+        _chatView = [[XChatView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 300) columns:12 rows:7 maxRate:13.4 holdDay:200 rateArr:arr];
         _chatView.backgroundColor = [UIColor orangeColor];
     }
     return _chatView;
