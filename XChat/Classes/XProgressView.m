@@ -29,18 +29,10 @@
     return self;
 }
 
-//- (void)drawRect:(CGRect)rect {
-//    [super drawRect:rect];
-//    
-//    CGContextRef *context = UIGraphicsGetCurrentContext();
-//    
-//    
-//}
-
 - (void)initElement {
     /// 灰色背景
     CAShapeLayer *bgLayer = [CAShapeLayer layer];
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(self.bounds.size.width * 0.5, self.bounds.size.width * 0.5)];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(w * 0.5, w * 0.5)];
     bgLayer.path = path.CGPath;
     bgLayer.fillColor = [UIColor lightGrayColor].CGColor;
     [self.layer addSublayer:bgLayer];
@@ -68,6 +60,7 @@
     
     UIBezierPath *path1 = nil;
     path1 = [UIBezierPath bezierPathWithRect:CGRectMake(0, w * 0.5, w * _progress, h - w * 0.5)];
+    
     UIBezierPath *path2;
     if (_progress > 0.5) {
         path2 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(w * 0.5, w * 0.5) radius:w * 0.5 startAngle:-M_PI endAngle:  -acos(2 * _progress - 1) clockwise:YES];
